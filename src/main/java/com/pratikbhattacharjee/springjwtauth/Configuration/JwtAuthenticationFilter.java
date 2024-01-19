@@ -35,7 +35,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
         //Getting the bearer token
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
-        final String userEmail;
+        final String username;
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             //Valid bearer format
             //Removing the Bearer prefix
@@ -43,11 +43,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 
             //Check the UserDetails service to check if we have the user registered or not
             //Get tuse user email
-            userEmail = jwtService.extractUsername(jwt);
+            username = jwtService.extractUsername(jwt);
 
             //Check if the user is registered or not
-            if (userEmail!= null && SecurityContextHolder.getContext().getAuthentication() == null){
-                UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+            if (username!= null && SecurityContextHolder.getContext().getAuthentication() == null){
+                UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
                 //check if the token is valid
                 if (jwtService.isTokenValid(jwt, userDetails)){
 
