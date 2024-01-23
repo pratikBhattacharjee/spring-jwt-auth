@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class DemoController {
     
-    @GetMapping("/api/v1/demoURL")
+    @GetMapping("/api/v1/demo-controller")
     public ResponseEntity<String> demo() {
         return ResponseEntity.ok("Hello from a secured endpoint!");
     }

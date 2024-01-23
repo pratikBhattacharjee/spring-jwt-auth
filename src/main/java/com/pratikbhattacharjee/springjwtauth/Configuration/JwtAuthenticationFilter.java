@@ -36,7 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String username;
-        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+        if (authHeader != null  authHeader.startsWith("Bearer ")) {
             //Valid bearer format
             //Removing the Bearer prefix
             jwt = authHeader.substring(7);
